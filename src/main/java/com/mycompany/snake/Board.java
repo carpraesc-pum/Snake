@@ -32,12 +32,12 @@ public class Board extends JPanel implements DrawSquareInterface {
                     }
                     break;
                 case KeyEvent.VK_UP:
-                    if (snake.getDirection() != Direction.UP) {
+                    if (snake.getDirection() != Direction.DOWN) {
                         snake.changeDirection(Direction.UP);
                     }
                     break;
                 case KeyEvent.VK_DOWN:
-                    if (snake.getDirection() != Direction.DOWN) {
+                    if (snake.getDirection() != Direction.UP) {
                         snake.changeDirection(Direction.DOWN);
                     }
                     break;
@@ -46,17 +46,18 @@ public class Board extends JPanel implements DrawSquareInterface {
     }
     // para que el timer solo se repita una vez hay que utilizar el setRepeats(false); 
     public static final int NUM_COLSROWS = 20;
-    private int currentRow;
-    private int currentCol;
     private MyKeyAdapter keyAdapter;
     private Snake snake;
     private DrawSquareInterface drawSquareInterface;
     private Timer timer;
     public static final int DELTA_TIME = 300;
+    private Food food;
+    private SpecialFood specialFood;
 
     public Board() {
         snake = new Snake(this);
         initBoard();
+        initComponents();
         
     }
 
@@ -78,6 +79,11 @@ public class Board extends JPanel implements DrawSquareInterface {
     private void initGame() {
         timer.start();
     }
+    
+    private void initComponents() {
+        food = new Food();
+        specialFood = new SpecialFood();
+    }
 
     private void tick() {
         if (snake.canMove()) {
@@ -87,6 +93,7 @@ public class Board extends JPanel implements DrawSquareInterface {
         }
         repaint();
     }
+    
 
     private void paintBorderBoard(Graphics g) {
         g.setColor(Color.black);
