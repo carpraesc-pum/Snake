@@ -3,76 +3,105 @@ package com.mycompany.snake;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import javax.swing.JPanel;
 import javax.swing.Timer;
-
-
-
-
-
 
 /**
  *
  * @author carpraesc
  */
 public class Board extends JPanel implements DrawSquareInterface {
-    
-    /*class MyKeyAdapter extends KeyAdapter {
+
+    class MyKeyAdapter extends KeyAdapter {
 
         @Override
         public void keyPressed(KeyEvent e) {
             switch (e.getKeyCode()) {
                 case KeyEvent.VK_LEFT:
-                    if (timer.isRunning() && canMove(currentRow, currentCol - 1, currentShape)) { //currentCol -1 sirve para comprobar si se puede mover hacia la izquierda
-                        currentCol--;
+                    if (snake.getDirection() != Direction.RIGHT) {
+                        snake.changeDirection(Direction.LEFT);
                     }
                     break;
                 case KeyEvent.VK_RIGHT:
-                    if (timer.isRunning() && canMove(currentRow, currentCol + 1, currentShape)) { //currentCol + 1 sirve para comprobar si se puede mover hacia la derecha
-                        currentCol++;
+                    if (snake.getDirection() != Direction.LEFT) {
+                        snake.changeDirection(Direction.RIGHT);
                     }
                     break;
                 case KeyEvent.VK_UP:
-                    rotate();
-                    break;
-                case KeyEvent.VK_DOWN:
-                    if (timer.isRunning() && canMove(currentRow + 1, currentCol, currentShape)) {
-                        currentRow++;
+                    if (snake.getDirection() != Direction.UP) {
+                        snake.changeDirection(Direction.UP);
                     }
                     break;
-                case KeyEvent.VK_SPACE:
-                    
-                default:
+                case KeyEvent.VK_DOWN:
+                    if (snake.getDirection() != Direction.DOWN) {
+                        snake.changeDirection(Direction.DOWN);
+                    }
                     break;
             }
-            repaint();
         }
-    }*/
-    
+    }
+    // para que el timer solo se repita una vez hay que utilizar el setRepeats(false); 
     public static final int NUM_COLSROWS = 20;
     private int currentRow;
     private int currentCol;
-    //private MyKeyAdapter keyAdapter;
+    private MyKeyAdapter keyAdapter;
     private Snake snake;
     private DrawSquareInterface drawSquareInterface;
     private Timer timer;
-    
+    public static final int DELTA_TIME = 300;
+
     public Board() {
         snake = new Snake(this);
+        initBoard();
+        
     }
-    
-    
-    
-    
+
+    private void initBoard() {
+        keyAdapter = new MyKeyAdapter();
+        addKeyListener(keyAdapter);
+        setFocusable(true);
+        timer = new Timer(DELTA_TIME, new ActionListener() {
+            @Override
+
+            public void actionPerformed(ActionEvent ae) {
+                tick();
+
+            }
+        });
+        initGame();
+    }
+
+    private void initGame() {
+        timer.start();
+    }
+
+    private void tick() {
+        if (snake.canMove()) {
+            snake.move();
+        } else {
+            //
+        }
+        repaint();
+    }
+
+    private void paintBorderBoard(Graphics g) {
+        g.setColor(Color.black);
+        int width = squareWidth() * NUM_COLSROWS;
+        int height = squareHeight() * NUM_COLSROWS;
+        g.drawRect(0, 0, width, height);
+    }
+
     @Override
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
         snake.paint(g);
         Toolkit.getDefaultToolkit().sync();
     }
-    
+
     private int squareWidth() {
         return getWidth() / NUM_COLSROWS;
     }
@@ -81,7 +110,6 @@ public class Board extends JPanel implements DrawSquareInterface {
         return getHeight() / NUM_COLSROWS;
     }
 
-    
     public void drawSquare(Graphics g, int row, int col,
             boolean isHead) {
         /*Color colors[] = {new Color(0, 0, 0),
@@ -92,7 +120,7 @@ public class Board extends JPanel implements DrawSquareInterface {
         };*/
         int x = col * squareWidth();
         int y = row * squareHeight();
-        Color color = isHead ? new Color(204, 102, 102) : new Color (102, 102, 204);
+        Color color = isHead ? new Color(204, 102, 102) : new Color(102, 102, 204);
         g.setColor(color);
         g.fillRect(x + 1, y + 1, squareWidth() - 2,
                 squareHeight() - 2);
@@ -106,8 +134,6 @@ public class Board extends JPanel implements DrawSquareInterface {
                 y + squareHeight() - 1,
                 x + squareWidth() - 1, y + 1);
     }
-
-
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -133,5 +159,4 @@ public class Board extends JPanel implements DrawSquareInterface {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     // End of variables declaration//GEN-END:variables
-
 }
