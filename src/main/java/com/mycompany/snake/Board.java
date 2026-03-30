@@ -1,5 +1,9 @@
 package com.mycompany.snake;
 
+import static com.mycompany.snake.SquareType.BODY;
+import static com.mycompany.snake.SquareType.FOOD;
+import static com.mycompany.snake.SquareType.HEAD;
+import static com.mycompany.snake.SquareType.SPECIALFOOD;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Toolkit;
@@ -53,6 +57,7 @@ public class Board extends JPanel implements DrawSquareInterface {
     public static final int DELTA_TIME = 300;
     private Food food;
     private SpecialFood specialFood;
+    private SquareType squareType;
 
     public Board() {
         snake = new Snake(this);
@@ -80,10 +85,6 @@ public class Board extends JPanel implements DrawSquareInterface {
         timer.start();
     }
     
-    private void initComponents() {
-        food = new Food();
-        specialFood = new SpecialFood();
-    }
 
     private void tick() {
         if (snake.canMove()) {
@@ -118,7 +119,7 @@ public class Board extends JPanel implements DrawSquareInterface {
     }
 
     public void drawSquare(Graphics g, int row, int col,
-            boolean isHead) {
+            SquareType type) {
         /*Color colors[] = {new Color(0, 0, 0),
             new Color(204, 102, 102),
             new Color(102, 204, 102), new Color(102, 102, 204),
@@ -127,7 +128,9 @@ public class Board extends JPanel implements DrawSquareInterface {
         };*/
         int x = col * squareWidth();
         int y = row * squareHeight();
-        Color color = isHead ? new Color(204, 102, 102) : new Color(102, 102, 204);
+        //Color color = isHead ? new Color(204, 102, 102) : new Color(102, 102, 204);
+        Color color = getSquareColor(type);
+        
         g.setColor(color);
         g.fillRect(x + 1, y + 1, squareWidth() - 2,
                 squareHeight() - 2);
@@ -140,6 +143,27 @@ public class Board extends JPanel implements DrawSquareInterface {
         g.drawLine(x + squareWidth() - 1,
                 y + squareHeight() - 1,
                 x + squareWidth() - 1, y + 1);
+        
+    }
+    
+    private Color getSquareColor(SquareType type) {
+        switch (type) {
+            case HEAD:
+                return new Color(102, 102, 204);
+                
+            case BODY:
+                return new Color(53, 90, 53);
+                
+            case FOOD:
+                return new Color(204, 102, 102);
+                
+            case SPECIALFOOD:
+                return new Color( 255, 215, 0);
+                
+            default:
+                throw new AssertionError();
+        }
+               
     }
 
     /**
