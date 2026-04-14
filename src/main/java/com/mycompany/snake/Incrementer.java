@@ -4,12 +4,11 @@
  */
 package com.mycompany.snake;
 
-import java.awt.Graphics;
-
 /**
  *
  * @author carpraesc
  */
-public interface DrawSquareInterface {
-    public void drawSquare(Graphics g, int row, int col, SquareType type);
+public interface Incrementer {
+    public void incrementScore(int increment);
+    public void resetScore();
 }

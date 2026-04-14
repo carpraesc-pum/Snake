@@ -50,14 +50,19 @@ public class Board extends JPanel implements DrawSquareInterface {
     }
     // para que el timer solo se repita una vez hay que utilizar el setRepeats(false); 
     public static final int NUM_COLSROWS = 20;
+    public static final int MIN_SPECIAL_TIME = 1000;
+    public static final int MAX_SPECIAL_TIME = 10000;
+    public static final int DELTA_TIME = 200;
+    
     private MyKeyAdapter keyAdapter;
     private Snake snake;
     private DrawSquareInterface drawSquareInterface;
     private Timer timer;
-    public static final int DELTA_TIME = 300;
+    private Timer specialTimer; 
     private Food food;
     private SpecialFood specialFood;
     private SquareType squareType;
+    private Incrementer incrementer;
 
     public Board() {
         snake = new Snake(this);
@@ -70,6 +75,16 @@ public class Board extends JPanel implements DrawSquareInterface {
         keyAdapter = new MyKeyAdapter();
         addKeyListener(keyAdapter);
         setFocusable(true);
+        food = new Food(snake, this);
+        specialFood = null;
+        int specialtime = (int) (Math.random() * (MAX_SPECIAL_TIME - MIN_SPECIAL_TIME)) + MIN_SPECIAL_TIME;
+        specialTimer = new Timer(specialtime, new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent ae) {
+                //specialFood = new SpecialFood(this);
+                specialFood = new SpecialFood(snake, Board.this);
+            }
+        });
         timer = new Timer(DELTA_TIME, new ActionListener() {
             @Override
 
@@ -82,15 +97,28 @@ public class Board extends JPanel implements DrawSquareInterface {
     }
 
     private void initGame() {
+        if (incrementer != null) {
+            incrementer.resetScore();
+        }
         timer.start();
+        specialTimer.start();
     }
     
 
     private void tick() {
         if (snake.canMove()) {
             snake.move();
+            if (snake.eatFood(food)) {
+                snake.grow(1);
+                food = new Food(snake, this);
+            }
+            if (snake.eatFood(specialFood)) {
+                snake.grow(3);
+                specialFood = new SpecialFood(snake, this);
+            }
         } else {
-            //
+            timer.stop();
+            specialTimer.stop();
         }
         repaint();
     }
@@ -107,6 +135,10 @@ public class Board extends JPanel implements DrawSquareInterface {
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
         snake.paint(g);
+        food.paintFood(g);
+        if (specialFood != null) {
+            specialFood.paintFood(g);
+        }
         Toolkit.getDefaultToolkit().sync();
     }
 
@@ -158,7 +190,7 @@ public class Board extends JPanel implements DrawSquareInterface {
                 return new Color(204, 102, 102);
                 
             case SPECIALFOOD:
-                return new Color( 255, 215, 0);
+                return new Color( 255, 202, 102);
                 
             default:
                 throw new AssertionError();
@@ -175,16 +207,7 @@ public class Board extends JPanel implements DrawSquareInterface {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
-        );
+        setLayout(new java.awt.BorderLayout());
     }// </editor-fold>//GEN-END:initComponents
 
 

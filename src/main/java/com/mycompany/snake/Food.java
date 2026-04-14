@@ -13,13 +13,16 @@ import java.awt.Graphics;
 public class Food extends Node {
     public DrawSquareInterface drawSquareInterface;
     
-    public Food(DrawSquareInterface drawSquareInterface) {
+    public Food(Snake snake, DrawSquareInterface drawSquareInterface) {
         super(0, 0); 
         this.drawSquareInterface = drawSquareInterface;
+        do {
         int row = (int)(Math.random() * Board.NUM_COLSROWS);
         int col = (int)(Math.random() * Board.NUM_COLSROWS);
         setRow(row);
-        setCol(col); 
+        setCol(col);
+        
+        } while (snake.colition(this));
     }
     
     public void paintFood(Graphics g) {
