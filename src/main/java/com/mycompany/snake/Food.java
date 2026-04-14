@@ -4,17 +4,25 @@
  */
 package com.mycompany.snake;
 
+import java.awt.Graphics;
+
 /**
  *
  * @author carpraesc
  */
 public class Food extends Node {
+    public DrawSquareInterface drawSquareInterface;
     
-    
-    public Food(int row, int col) {
-        super(row, col); // Esto hay que preguntar si está bien para heredar, falta el resto
-        
+    public Food(DrawSquareInterface drawSquareInterface) {
+        super(0, 0); 
+        this.drawSquareInterface = drawSquareInterface;
+        int row = (int)(Math.random() * Board.NUM_COLSROWS);
+        int col = (int)(Math.random() * Board.NUM_COLSROWS);
+        setRow(row);
+        setCol(col); 
     }
     
-    
+    public void paintFood(Graphics g) {
+        drawSquareInterface.drawSquare(g, getRow(), getCol(), SquareType.FOOD);
+    }
 }
