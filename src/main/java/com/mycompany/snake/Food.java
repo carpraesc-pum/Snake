@@ -22,7 +22,7 @@ public class Food extends Node {
         setRow(row);
         setCol(col);
         
-        } while (snake.colition(this));
+        } while (snake.contains(this));
     }
     
     public void paintFood(Graphics g) {

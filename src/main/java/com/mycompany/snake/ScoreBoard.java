@@ -4,6 +4,8 @@
  */
 package com.mycompany.snake;
 
+import com.mycompany.snake.interfaces.Incrementer;
+
 /**
  *
  * @author carpraesc

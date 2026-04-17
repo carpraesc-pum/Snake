@@ -40,14 +40,7 @@ public class Snake {
         nodesToGrow += amount;
     }
     
-    public boolean colition(Node node) {
-        for (Node n : nodes) {
-            if (node.getCol() == n.getCol() && node.getRow() == n.getRow()) {
-                return true;
-            }
-        }
-        return false;
-    }
+    
     
     public boolean eatFood(Food food) {
         if (food == null) {
@@ -66,20 +59,52 @@ public class Snake {
     public void changeDirection(Direction newDirection) {
         direction = newDirection;
     }
-
+    
+    public boolean contains(Node node) {
+        for (Node n : nodes) {
+            if (node.getCol() == n.getCol() && node.getRow() == n.getRow()) {
+                return true;
+            }
+        }
+        return false;
+    }
+    
     public boolean canMove() {
+        int row = nodes.getFirst().getRow();
+        int col = nodes.getFirst().getCol();
+        Node node = null;
         switch (direction) {
             case UP:
-                return nodes.getFirst().getRow() - 1 >= 0;
+                node = new Node(row - 1, col);
+                break;
             case DOWN:
-                return nodes.getFirst().getRow() + 1 < Board.NUM_COLSROWS;
+                node = new Node(row + 1, col);
+                break;
             case LEFT:
-                return nodes.getFirst().getCol() - 1 >= 0;
+                node = new Node(row, col - 1);
+                break;
             case RIGHT:
-                return nodes.getFirst().getCol() + 1 < Board.NUM_COLSROWS;
+                node = new Node(row, col + 1);
+                break;
         }
+        if (node.getRow() < 0 || node.getRow() >= Board.NUM_COLSROWS ||
+                node.getCol() < 0 || node.getCol() >= Board.NUM_COLSROWS || colidesWithItself(node)) {
+            return false;
+        }
+        
         return true;
     }
+    
+    public boolean colidesWithItself(Node nodeX) {
+        for (Node node: nodes) {
+            if (nodeX.getRow() == node.getRow() && nodeX.getCol() == node.getCol()) {
+                return true;
+            }
+        }
+        return false;
+    }
+    
+    
 
     public void move() {
         Node node = null;
@@ -122,9 +147,13 @@ public class Snake {
 
     }
     /*
-        - Mejorar interfaz
-        - Hacer que cuando se choca con un borde se reinicie
-        - Crear la ventana emergente de Game Over
-        - 
+        - Pantalla principal de menú
+        - Bug: cuando das dos teclas muy rapido detecta como hit
+        - Mejorar interfaz (poner iconos)
+        - Los creditos
+        - Configuración
+        - Records
+        - Cambio de dificultad
+        
     */
 }

@@ -4,6 +4,8 @@
  */
 package com.mycompany.snake;
 
+import com.mycompany.snake.interfaces.GameOverDialog;
+
 /**
  *
  * @author carpraesc
@@ -11,12 +13,17 @@ package com.mycompany.snake;
 public class Game extends javax.swing.JFrame {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(Game.class.getName());
-
+    private GameOverDialog gameOverDialog;
+    
     /**
      * Creates new form Game
      */
     public Game() {
         initComponents();
+        board1.setIncrementer(scoreBoard1);
+        gameOverDialog = new GameOverDialog(this, true);
+        board1.setGameOver(gameOverDialog);
+        gameOverDialog.setInitGamer(board1);
     }
 
     /**
@@ -39,18 +46,34 @@ public class Game extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().add(scoreBoard1, java.awt.BorderLayout.PAGE_END);
+
+        board1.setPreferredSize(new java.awt.Dimension(1000, 1000));
         getContentPane().add(board1, java.awt.BorderLayout.CENTER);
 
+        jMenuBar1.setMinimumSize(new java.awt.Dimension(79, 35));
+
         jMenu1.setText("I I");
+        jMenu1.addMenuListener(new javax.swing.event.MenuListener() {
+            public void menuCanceled(javax.swing.event.MenuEvent evt) {
+            }
+            public void menuDeselected(javax.swing.event.MenuEvent evt) {
+                jMenu1MenuDeselected(evt);
+            }
+            public void menuSelected(javax.swing.event.MenuEvent evt) {
+                jMenu1MenuSelected(evt);
+            }
+        });
 
         jMenuItem1.setText("Menu");
         jMenuItem1.addActionListener(this::jMenuItem1ActionPerformed);
         jMenu1.add(jMenuItem1);
 
         jMenuItem2.setText("New Game");
+        jMenuItem2.addActionListener(this::jMenuItem2ActionPerformed);
         jMenu1.add(jMenuItem2);
 
         jMenuItem3.setText("Exit");
+        jMenuItem3.addActionListener(this::jMenuItem3ActionPerformed);
         jMenu1.add(jMenuItem3);
 
         jMenuBar1.add(jMenu1);
@@ -66,6 +89,26 @@ public class Game extends javax.swing.JFrame {
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItem1ActionPerformed
+
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+        // TODO add your handling code here:
+        board1.initGame();
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
+
+    private void jMenu1MenuSelected(javax.swing.event.MenuEvent evt) {//GEN-FIRST:event_jMenu1MenuSelected
+        // TODO add your handling code here:
+        board1.pause();
+    }//GEN-LAST:event_jMenu1MenuSelected
+
+    private void jMenu1MenuDeselected(javax.swing.event.MenuEvent evt) {//GEN-FIRST:event_jMenu1MenuDeselected
+        // TODO add your handling code here:
+        board1.pause();
+    }//GEN-LAST:event_jMenu1MenuDeselected
+
+    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
+        // TODO add your handling code here:
+        System.exit(0);
+    }//GEN-LAST:event_jMenuItem3ActionPerformed
 
     /**
      * @param args the command line arguments

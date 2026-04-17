@@ -1,9 +1,12 @@
 package com.mycompany.snake;
 
+import com.mycompany.snake.interfaces.Incrementer;
 import static com.mycompany.snake.SquareType.BODY;
 import static com.mycompany.snake.SquareType.FOOD;
 import static com.mycompany.snake.SquareType.HEAD;
 import static com.mycompany.snake.SquareType.SPECIALFOOD;
+import com.mycompany.snake.interfaces.GameOverInterface;
+import com.mycompany.snake.interfaces.InitGamer;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Toolkit;
@@ -18,7 +21,7 @@ import javax.swing.Timer;
  *
  * @author carpraesc
  */
-public class Board extends JPanel implements DrawSquareInterface {
+public class Board extends JPanel implements DrawSquareInterface, InitGamer {
 
     class MyKeyAdapter extends KeyAdapter {
 
@@ -51,7 +54,7 @@ public class Board extends JPanel implements DrawSquareInterface {
     // para que el timer solo se repita una vez hay que utilizar el setRepeats(false); 
     public static final int NUM_COLSROWS = 20;
     public static final int MIN_SPECIAL_TIME = 1000;
-    public static final int MAX_SPECIAL_TIME = 10000;
+    public static final int MAX_SPECIAL_TIME = 5000;
     public static final int DELTA_TIME = 200;
     
     private MyKeyAdapter keyAdapter;
@@ -63,6 +66,7 @@ public class Board extends JPanel implements DrawSquareInterface {
     private SpecialFood specialFood;
     private SquareType squareType;
     private Incrementer incrementer;
+    private GameOverInterface gameOverInterface;
 
     public Board() {
         snake = new Snake(this);
@@ -96,12 +100,13 @@ public class Board extends JPanel implements DrawSquareInterface {
         initGame();
     }
 
-    private void initGame() {
+    public void initGame() {
         if (incrementer != null) {
             incrementer.resetScore();
         }
         timer.start();
         specialTimer.start();
+        snake = new Snake(this);
     }
     
 
@@ -111,18 +116,44 @@ public class Board extends JPanel implements DrawSquareInterface {
             if (snake.eatFood(food)) {
                 snake.grow(1);
                 food = new Food(snake, this);
+                incrementer.incrementScore(1);
+                
             }
             if (snake.eatFood(specialFood)) {
                 snake.grow(3);
                 specialFood = new SpecialFood(snake, this);
+                incrementer.incrementScore(3);
+
             }
         } else {
-            timer.stop();
-            specialTimer.stop();
+            doGameOver();
         }
         repaint();
     }
     
+    public void setGameOver(GameOverInterface gameOverInterface) {
+        this.gameOverInterface = gameOverInterface;
+    }
+    
+    public void doGameOver() {
+        timer.stop();
+        specialTimer.stop();
+        gameOverInterface.setVisible(this);
+    }
+    
+    public void pause() {
+        if (timer.isRunning()) {
+            timer.stop();
+            specialTimer.stop();
+        } else {
+            timer.start();
+            specialTimer.start();
+        }
+    }
+    
+    public void setIncrementer(Incrementer incrementer) {
+        this.incrementer = incrementer;
+    }
 
     private void paintBorderBoard(Graphics g) {
         g.setColor(Color.black);
@@ -184,7 +215,7 @@ public class Board extends JPanel implements DrawSquareInterface {
                 return new Color(102, 102, 204);
                 
             case BODY:
-                return new Color(53, 90, 53);
+                return new Color(150, 150, 200);
                 
             case FOOD:
                 return new Color(204, 102, 102);
