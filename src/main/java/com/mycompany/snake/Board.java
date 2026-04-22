@@ -1,5 +1,6 @@
 package com.mycompany.snake;
 
+import com.mycompany.snake.interfaces.DrawSquareInterface;
 import com.mycompany.snake.interfaces.Incrementer;
 import static com.mycompany.snake.SquareType.BODY;
 import static com.mycompany.snake.SquareType.FOOD;
@@ -52,10 +53,10 @@ public class Board extends JPanel implements DrawSquareInterface, InitGamer {
         }
     }
     // para que el timer solo se repita una vez hay que utilizar el setRepeats(false); 
-    public static final int NUM_COLSROWS = 20;
+    public static int numColsRows = 20 ;
     public static final int MIN_SPECIAL_TIME = 1000;
-    public static final int MAX_SPECIAL_TIME = 5000;
-    public static final int DELTA_TIME = 200;
+    public static final int MAX_SPECIAL_TIME = 3000;
+    public static final int DELTA_TIME = 100;
     
     private MyKeyAdapter keyAdapter;
     private Snake snake;
@@ -97,7 +98,7 @@ public class Board extends JPanel implements DrawSquareInterface, InitGamer {
 
             }
         });
-        initGame();
+        
     }
 
     public void initGame() {
@@ -109,6 +110,12 @@ public class Board extends JPanel implements DrawSquareInterface, InitGamer {
         snake = new Snake(this);
     }
     
+    public void clear() {
+        snake = null;
+        food = null;
+        specialFood = null;
+        repaint();
+    }
 
     private void tick() {
         if (snake.canMove()) {
@@ -129,6 +136,10 @@ public class Board extends JPanel implements DrawSquareInterface, InitGamer {
             doGameOver();
         }
         repaint();
+    }
+    
+    public void changeNumBoard(int numBoxes) {
+        numColsRows = numBoxes;
     }
     
     public void setGameOver(GameOverInterface gameOverInterface) {
@@ -157,8 +168,8 @@ public class Board extends JPanel implements DrawSquareInterface, InitGamer {
 
     private void paintBorderBoard(Graphics g) {
         g.setColor(Color.black);
-        int width = squareWidth() * NUM_COLSROWS;
-        int height = squareHeight() * NUM_COLSROWS;
+        int width = squareWidth() * numColsRows;
+        int height = squareHeight() * numColsRows;
         g.drawRect(0, 0, width, height);
     }
 
@@ -174,11 +185,11 @@ public class Board extends JPanel implements DrawSquareInterface, InitGamer {
     }
 
     private int squareWidth() {
-        return getWidth() / NUM_COLSROWS;
+        return getWidth() / numColsRows;
     }
 
     private int squareHeight() {
-        return getHeight() / NUM_COLSROWS;
+        return getHeight() / numColsRows;
     }
 
     public void drawSquare(Graphics g, int row, int col,
@@ -212,10 +223,10 @@ public class Board extends JPanel implements DrawSquareInterface, InitGamer {
     private Color getSquareColor(SquareType type) {
         switch (type) {
             case HEAD:
-                return new Color(102, 102, 204);
+                return new Color(37, 211, 102);
                 
             case BODY:
-                return new Color(150, 150, 200);
+                return new Color(77, 251, 142);
                 
             case FOOD:
                 return new Color(204, 102, 102);

@@ -4,6 +4,7 @@
  */
 package com.mycompany.snake;
 
+import com.mycompany.snake.interfaces.DrawSquareInterface;
 import java.awt.Graphics;
 
 /**
@@ -17,8 +18,8 @@ public class Food extends Node {
         super(0, 0); 
         this.drawSquareInterface = drawSquareInterface;
         do {
-        int row = (int)(Math.random() * Board.NUM_COLSROWS);
-        int col = (int)(Math.random() * Board.NUM_COLSROWS);
+        int row = (int)(Math.random() * Board.numColsRows);
+        int col = (int)(Math.random() * Board.numColsRows);
         setRow(row);
         setCol(col);
         

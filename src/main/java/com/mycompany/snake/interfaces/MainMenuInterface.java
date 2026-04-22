@@ -8,8 +8,6 @@ package com.mycompany.snake.interfaces;
  *
  * @author carpraesc
  */
-public interface Incrementer {
-    public void incrementScore(int increment);
-    public void resetScore();
-    public int getScore();
+public interface MainMenuInterface {
+    
 }

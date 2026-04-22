@@ -29,6 +29,11 @@ public class ScoreBoard extends javax.swing.JPanel implements Incrementer {
         incrementScore(0);
     }
     
+    @Override
+    public int getScore() {
+        return score;
+    }
+    
     public void incrementScore(int increment) {
         score += increment;
         jLabel1.setText("Score: " + score);
@@ -45,6 +50,7 @@ public class ScoreBoard extends javax.swing.JPanel implements Incrementer {
 
         jLabel1 = new javax.swing.JLabel();
 
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Score: ");
         add(jLabel1);
     }// </editor-fold>//GEN-END:initComponents

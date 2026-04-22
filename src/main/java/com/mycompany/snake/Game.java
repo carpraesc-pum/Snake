@@ -5,6 +5,7 @@
 package com.mycompany.snake;
 
 import com.mycompany.snake.interfaces.GameOverDialog;
+import java.awt.Color;
 
 /**
  *
@@ -14,17 +15,24 @@ public class Game extends javax.swing.JFrame {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(Game.class.getName());
     private GameOverDialog gameOverDialog;
-    
+    // para cerrar la ventana poner un listener
     /**
      * Creates new form Game
      */
     public Game() {
         initComponents();
-        board1.setIncrementer(scoreBoard1);
+        menuSelected();
+        board2.setIncrementer(scoreBoard1);
         gameOverDialog = new GameOverDialog(this, true);
-        board1.setGameOver(gameOverDialog);
-        gameOverDialog.setInitGamer(board1);
+        gameOverDialog.setIncrementer(scoreBoard1);
+        board2.setGameOver(gameOverDialog);
+        gameOverDialog.setInitGamer(board2);
+        board2.initGame();
+            
     }
+    
+        
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -35,24 +43,219 @@ public class Game extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jDialog1 = new javax.swing.JDialog();
+        jPanel2 = new javax.swing.JPanel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        jExitButton1 = new javax.swing.JButton();
+        jCreditsMenuButton1 = new javax.swing.JButton();
+        jDialog2 = new javax.swing.JDialog();
+        jPanel1 = new javax.swing.JPanel();
+        jLabel5 = new javax.swing.JLabel();
+        jLittleButton = new javax.swing.JButton();
+        jMediumButton = new javax.swing.JButton();
+        jHugeButton = new javax.swing.JButton();
+        jLabel6 = new javax.swing.JLabel();
+        jButton4 = new javax.swing.JButton();
+        jButtonExitMenu = new javax.swing.JButton();
+        jCreditsButton = new javax.swing.JButton();
         scoreBoard1 = new com.mycompany.snake.ScoreBoard();
-        board1 = new com.mycompany.snake.Board();
+        board2 = new com.mycompany.snake.Board();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
         jMenuItem2 = new javax.swing.JMenuItem();
         jMenuItem3 = new javax.swing.JMenuItem();
-        jMenu2 = new javax.swing.JMenu();
+
+        jDialog1.setBackground(new java.awt.Color(37, 40, 47));
+        jDialog1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jDialog1.setMinimumSize(new java.awt.Dimension(380, 282));
+
+        jPanel2.setBackground(new java.awt.Color(37, 40, 46));
+        jPanel2.setPreferredSize(new java.awt.Dimension(380, 282));
+
+        jLabel7.setBackground(new java.awt.Color(37, 40, 46));
+        jLabel7.setFont(new java.awt.Font("Open Sans Semibold", 0, 36)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(37, 211, 102));
+        jLabel7.setText("Credits");
+
+        jLabel8.setFont(new java.awt.Font("Open Sans Semibold", 0, 18)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(37, 211, 102));
+        jLabel8.setText("Created by: Carlos Prada Escortell");
+
+        jExitButton1.setBackground(new java.awt.Color(37, 40, 46));
+        jExitButton1.setFont(new java.awt.Font("Open Sans Semibold", 0, 18)); // NOI18N
+        jExitButton1.setForeground(new java.awt.Color(37, 211, 102));
+        jExitButton1.setText("Exit");
+        jExitButton1.addActionListener(this::jExitButton1ActionPerformed);
+
+        jCreditsMenuButton1.setBackground(new java.awt.Color(37, 40, 46));
+        jCreditsMenuButton1.setFont(new java.awt.Font("Open Sans Semibold", 0, 18)); // NOI18N
+        jCreditsMenuButton1.setForeground(new java.awt.Color(37, 211, 102));
+        jCreditsMenuButton1.setText("Menu");
+        jCreditsMenuButton1.addActionListener(this::jCreditsMenuButton1ActionPerformed);
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(62, 62, 62)
+                .addComponent(jCreditsMenuButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(26, 26, 26)
+                .addComponent(jExitButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap(48, Short.MAX_VALUE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addComponent(jLabel8)
+                        .addGap(41, 41, 41))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addComponent(jLabel7)
+                        .addGap(125, 125, 125))))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(30, 30, 30)
+                .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel8)
+                .addGap(18, 18, 18)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jCreditsMenuButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 75, Short.MAX_VALUE)
+                    .addComponent(jExitButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(74, Short.MAX_VALUE))
+        );
+
+        javax.swing.GroupLayout jDialog1Layout = new javax.swing.GroupLayout(jDialog1.getContentPane());
+        jDialog1.getContentPane().setLayout(jDialog1Layout);
+        jDialog1Layout.setHorizontalGroup(
+            jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        jDialog1Layout.setVerticalGroup(
+            jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 287, Short.MAX_VALUE)
+        );
+
+        jDialog2.setMinimumSize(new java.awt.Dimension(400, 350));
+        jDialog2.setPreferredSize(new java.awt.Dimension(408, 490));
+
+        jPanel1.setBackground(new java.awt.Color(37, 40, 46));
+        jPanel1.setMaximumSize(new java.awt.Dimension(400, 300));
+
+        jLabel5.setFont(new java.awt.Font("Open Sans Semibold", 0, 48)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(37, 211, 102));
+        jLabel5.setText("MENU");
+
+        jLittleButton.setBackground(new java.awt.Color(37, 40, 47));
+        jLittleButton.setFont(new java.awt.Font("Open Sans Semibold", 0, 15)); // NOI18N
+        jLittleButton.setForeground(new java.awt.Color(37, 211, 102));
+        jLittleButton.setText("Little");
+        jLittleButton.addActionListener(this::jLittleButtonActionPerformed);
+
+        jMediumButton.setBackground(new java.awt.Color(37, 40, 46));
+        jMediumButton.setFont(new java.awt.Font("Open Sans Semibold", 0, 15)); // NOI18N
+        jMediumButton.setForeground(new java.awt.Color(37, 211, 102));
+        jMediumButton.setText("Medium");
+        jMediumButton.addActionListener(this::jMediumButtonActionPerformed);
+
+        jHugeButton.setBackground(new java.awt.Color(37, 40, 47));
+        jHugeButton.setFont(new java.awt.Font("Open Sans Semibold", 0, 15)); // NOI18N
+        jHugeButton.setForeground(new java.awt.Color(37, 211, 102));
+        jHugeButton.setText("Huge");
+        jHugeButton.addActionListener(this::jHugeButtonActionPerformed);
+
+        jLabel6.setFont(new java.awt.Font("Open Sans Semibold", 0, 18)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(37, 211, 102));
+        jLabel6.setText("Board Size");
+
+        jButton4.setBackground(new java.awt.Color(37, 211, 102));
+        jButton4.setFont(new java.awt.Font("Open Sans Semibold", 0, 24)); // NOI18N
+        jButton4.setForeground(new java.awt.Color(37, 40, 46));
+        jButton4.setText("Start Game");
+        jButton4.addActionListener(this::jButton4ActionPerformed);
+
+        jButtonExitMenu.setBackground(new java.awt.Color(37, 40, 46));
+        jButtonExitMenu.setFont(new java.awt.Font("Open Sans Semibold", 0, 15)); // NOI18N
+        jButtonExitMenu.setForeground(new java.awt.Color(37, 211, 102));
+        jButtonExitMenu.setText("Exit");
+        jButtonExitMenu.addActionListener(this::jButtonExitMenuActionPerformed);
+
+        jCreditsButton.setBackground(new java.awt.Color(37, 40, 46));
+        jCreditsButton.setFont(new java.awt.Font("Open Sans Semibold", 0, 15)); // NOI18N
+        jCreditsButton.setForeground(new java.awt.Color(37, 211, 102));
+        jCreditsButton.setText("About");
+        jCreditsButton.addActionListener(this::jCreditsButtonActionPerformed);
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jCreditsButton)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButtonExitMenu)
+                .addContainerGap())
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(32, 32, 32)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 63, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLittleButton, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jMediumButton, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jHugeButton, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(8, 8, 8)
+                        .addComponent(jLabel6)))
+                .addGap(31, 31, 31))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(15, 15, 15)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(32, 32, 32)
+                        .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel6)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLittleButton)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jMediumButton)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jHugeButton)))
+                .addGap(70, 70, 70)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButtonExitMenu)
+                    .addComponent(jCreditsButton))
+                .addContainerGap(205, Short.MAX_VALUE))
+        );
+
+        jDialog2.getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        scoreBoard1.setBackground(new java.awt.Color(55, 60, 63));
+        scoreBoard1.setForeground(new java.awt.Color(255, 255, 255));
         getContentPane().add(scoreBoard1, java.awt.BorderLayout.PAGE_END);
 
-        board1.setPreferredSize(new java.awt.Dimension(1000, 1000));
-        getContentPane().add(board1, java.awt.BorderLayout.CENTER);
+        board2.setBackground(new java.awt.Color(35, 40, 46));
+        board2.setMinimumSize(new java.awt.Dimension(1000, 1000));
+        board2.setPreferredSize(new java.awt.Dimension(1000, 1000));
+        getContentPane().add(board2, java.awt.BorderLayout.CENTER);
 
+        jMenuBar1.setBackground(new java.awt.Color(37, 211, 102));
         jMenuBar1.setMinimumSize(new java.awt.Dimension(79, 35));
 
-        jMenu1.setText("I I");
+        jMenu1.setText("| |");
         jMenu1.addMenuListener(new javax.swing.event.MenuListener() {
             public void menuCanceled(javax.swing.event.MenuEvent evt) {
             }
@@ -78,9 +281,6 @@ public class Game extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu1);
 
-        jMenu2.setText("About");
-        jMenuBar1.add(jMenu2);
-
         setJMenuBar(jMenuBar1);
 
         pack();
@@ -92,17 +292,17 @@ public class Game extends javax.swing.JFrame {
 
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
         // TODO add your handling code here:
-        board1.initGame();
+        board2.initGame();
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     private void jMenu1MenuSelected(javax.swing.event.MenuEvent evt) {//GEN-FIRST:event_jMenu1MenuSelected
         // TODO add your handling code here:
-        board1.pause();
+        board2.pause();
     }//GEN-LAST:event_jMenu1MenuSelected
 
     private void jMenu1MenuDeselected(javax.swing.event.MenuEvent evt) {//GEN-FIRST:event_jMenu1MenuDeselected
         // TODO add your handling code here:
-        board1.pause();
+        board2.pause();
     }//GEN-LAST:event_jMenu1MenuDeselected
 
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
@@ -110,6 +310,88 @@ public class Game extends javax.swing.JFrame {
         System.exit(0);
     }//GEN-LAST:event_jMenuItem3ActionPerformed
 
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        // TODO add your handling code here:
+        jDialog2.setVisible(false);
+    }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jLittleButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jLittleButtonActionPerformed
+        // TODO add your handling code here:
+        littleButtonSelected();
+        board2.changeNumBoard(22);
+    }//GEN-LAST:event_jLittleButtonActionPerformed
+
+    private void jButtonExitMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonExitMenuActionPerformed
+        // TODO add your handling code here:
+        System.exit(0);
+    }//GEN-LAST:event_jButtonExitMenuActionPerformed
+
+    private void jMediumButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMediumButtonActionPerformed
+        // TODO add your handling code here:
+        mediumButtonSelected();
+        board2.changeNumBoard(50);
+    }//GEN-LAST:event_jMediumButtonActionPerformed
+
+    private void jHugeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jHugeButtonActionPerformed
+        // TODO add your handling code here:
+        hugeButtonSelected();
+        board2.changeNumBoard(90);
+    }//GEN-LAST:event_jHugeButtonActionPerformed
+
+    private void jExitButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jExitButton1ActionPerformed
+        // TODO add your handling code here:
+        System.exit(0);
+    }//GEN-LAST:event_jExitButton1ActionPerformed
+
+    private void jCreditsMenuButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCreditsMenuButton1ActionPerformed
+        // TODO add your handling code here:
+        jDialog1.setVisible(false);
+    }//GEN-LAST:event_jCreditsMenuButton1ActionPerformed
+
+    private void jCreditsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCreditsButtonActionPerformed
+        // TODO add your handling code here:
+        jDialog1.setModal(true);
+        jDialog1.setVisible(true);
+    }//GEN-LAST:event_jCreditsButtonActionPerformed
+    
+    public void littleButtonSelected() {
+        jLittleButton.setBackground(new Color(37, 211, 102));
+        jLittleButton.setForeground(new Color(37,40,46));
+        
+        jMediumButton.setBackground(new Color(37, 40, 46));
+        jMediumButton.setForeground(new Color(37,211,102));
+        
+        jHugeButton.setBackground(new Color(37, 40, 46));
+        jHugeButton.setForeground(new Color(37,211,102));
+    }
+    
+    public void mediumButtonSelected() {
+        jLittleButton.setBackground(new Color(37, 40, 46));
+        jLittleButton.setForeground(new Color(37,211,102));
+        
+        jMediumButton.setBackground(new Color(37, 211, 102));
+        jMediumButton.setForeground(new Color(37, 40, 46));
+        
+        jHugeButton.setBackground(new Color(37, 40, 46));
+        jHugeButton.setForeground(new Color(37,211,102));
+    }
+    
+    public void hugeButtonSelected() {
+        jLittleButton.setBackground(new Color(37, 40, 46));
+        jLittleButton.setForeground(new Color(37,211,102));
+        
+        jMediumButton.setBackground(new Color(37, 40, 46));
+        jMediumButton.setForeground(new Color(37,211,102));
+        
+        jHugeButton.setBackground(new Color(37,211,102));
+        jHugeButton.setForeground(new Color(37, 40, 46));
+    }
+    
+    public void menuSelected() {
+        jDialog2.setModal(true);
+        jDialog2.setVisible(true);
+    }
+    
     /**
      * @param args the command line arguments
      */
@@ -136,13 +418,28 @@ public class Game extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private com.mycompany.snake.Board board1;
+    private com.mycompany.snake.Board board2;
+    private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButtonExitMenu;
+    private javax.swing.JButton jCreditsButton;
+    private javax.swing.JButton jCreditsMenuButton1;
+    private javax.swing.JDialog jDialog1;
+    private javax.swing.JDialog jDialog2;
+    private javax.swing.JButton jExitButton1;
+    private javax.swing.JButton jHugeButton;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JButton jLittleButton;
+    private javax.swing.JButton jMediumButton;
     private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private com.mycompany.snake.ScoreBoard scoreBoard1;
     // End of variables declaration//GEN-END:variables
 }

@@ -4,6 +4,7 @@
  */
 package com.mycompany.snake;
 
+import com.mycompany.snake.interfaces.DrawSquareInterface;
 import static com.mycompany.snake.Direction.DOWN;
 import static com.mycompany.snake.Direction.LEFT;
 import static com.mycompany.snake.Direction.RIGHT;
@@ -27,7 +28,7 @@ public class Snake {
         nodes = new ArrayList<Node>();
         direction = Direction.RIGHT;
         this.drawSquareInterface = drawSquareInterface;
-        int middle = Board.NUM_COLSROWS / 2;
+        int middle = Board.numColsRows / 2;
         for (int i = 0; i < 4; i++) {
             Node node = new Node(middle, middle + i - 4);
             addNode(node);
@@ -87,8 +88,8 @@ public class Snake {
                 node = new Node(row, col + 1);
                 break;
         }
-        if (node.getRow() < 0 || node.getRow() >= Board.NUM_COLSROWS ||
-                node.getCol() < 0 || node.getCol() >= Board.NUM_COLSROWS || colidesWithItself(node)) {
+        if (node.getRow() < 0 || node.getRow() >= Board.numColsRows ||
+                node.getCol() < 0 || node.getCol() >= Board.numColsRows || colidesWithItself(node)) {
             return false;
         }
         
@@ -147,13 +148,13 @@ public class Snake {
 
     }
     /*
-        - Pantalla principal de menú
+        - falata el menu del game Over
         - Bug: cuando das dos teclas muy rapido detecta como hit
-        - Mejorar interfaz (poner iconos)
-        - Los creditos
-        - Configuración
-        - Records
-        - Cambio de dificultad
         
+        
+        - Configuración
+        - Records hacer fichero
+        
+        - Música
     */
 }
