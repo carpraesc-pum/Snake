@@ -56,7 +56,7 @@ public class Board extends JPanel implements DrawSquareInterface, InitGamer {
     public static int numColsRows = 20 ;
     public static final int MIN_SPECIAL_TIME = 1000;
     public static final int MAX_SPECIAL_TIME = 3000;
-    public static final int DELTA_TIME = 100;
+    public static int deltaTimer = 300;
     
     private MyKeyAdapter keyAdapter;
     private Snake snake;
@@ -68,6 +68,8 @@ public class Board extends JPanel implements DrawSquareInterface, InitGamer {
     private SquareType squareType;
     private Incrementer incrementer;
     private GameOverInterface gameOverInterface;
+    private int timeTrial = 10;
+    private int counterTimeTrial = 1;
 
     public Board() {
         snake = new Snake(this);
@@ -90,11 +92,12 @@ public class Board extends JPanel implements DrawSquareInterface, InitGamer {
                 specialFood = new SpecialFood(snake, Board.this);
             }
         });
-        timer = new Timer(DELTA_TIME, new ActionListener() {
+        timer = new Timer(deltaTimer, new ActionListener() {
             @Override
 
             public void actionPerformed(ActionEvent ae) {
                 tick();
+                
 
             }
         });
@@ -136,6 +139,25 @@ public class Board extends JPanel implements DrawSquareInterface, InitGamer {
             doGameOver();
         }
         repaint();
+    }
+    
+    public void startTimeTrial(boolean beggin) {
+        if (beggin) {
+            timeTrial -= counterTimeTrial;
+        }
+    }
+    
+    public boolean isTimeTrialEnd() {
+        if (timeTrial == 0) {
+            doGameOver();
+            return true;
+        }
+        return false;
+    }
+    
+    public void changeSpeedSnake(int numSpeed) {
+        deltaTimer = numSpeed;
+        timer.setDelay(numSpeed);
     }
     
     public void changeNumBoard(int numBoxes) {

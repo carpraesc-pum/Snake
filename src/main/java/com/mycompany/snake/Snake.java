@@ -150,11 +150,9 @@ public class Snake {
     /*
         - falata el menu del game Over
         - Bug: cuando das dos teclas muy rapido detecta como hit
-        
-        
-        - Configuración
+        - contrarreloj cuando comes food suma tiempo
         - Records hacer fichero
-        
-        - Música
+        - Musica (si sobra tiempo)
+        - tres en raya o hundir la flota
     */
 }

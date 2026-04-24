@@ -59,6 +59,11 @@ public class Game extends javax.swing.JFrame {
         jButton4 = new javax.swing.JButton();
         jButtonExitMenu = new javax.swing.JButton();
         jCreditsButton = new javax.swing.JButton();
+        jLabel9 = new javax.swing.JLabel();
+        jSeparator1 = new javax.swing.JSeparator();
+        jSlowSpeedButton = new javax.swing.JButton();
+        jNormalSpeedButton = new javax.swing.JButton();
+        jFastSpeedButton = new javax.swing.JButton();
         scoreBoard1 = new com.mycompany.snake.ScoreBoard();
         board2 = new com.mycompany.snake.Board();
         jMenuBar1 = new javax.swing.JMenuBar();
@@ -140,14 +145,17 @@ public class Game extends javax.swing.JFrame {
             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 287, Short.MAX_VALUE)
         );
 
-        jDialog2.setMinimumSize(new java.awt.Dimension(400, 350));
-        jDialog2.setPreferredSize(new java.awt.Dimension(408, 490));
+        jDialog2.setMinimumSize(new java.awt.Dimension(442, 448));
+        jDialog2.setPreferredSize(new java.awt.Dimension(442, 448));
 
         jPanel1.setBackground(new java.awt.Color(37, 40, 46));
-        jPanel1.setMaximumSize(new java.awt.Dimension(400, 300));
+        jPanel1.setMaximumSize(new java.awt.Dimension(442, 448));
+        jPanel1.setMinimumSize(new java.awt.Dimension(442, 448));
+        jPanel1.setPreferredSize(new java.awt.Dimension(442, 448));
 
         jLabel5.setFont(new java.awt.Font("Open Sans Semibold", 0, 48)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(37, 211, 102));
+        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel5.setText("MENU");
 
         jLittleButton.setBackground(new java.awt.Color(37, 40, 47));
@@ -170,6 +178,7 @@ public class Game extends javax.swing.JFrame {
 
         jLabel6.setFont(new java.awt.Font("Open Sans Semibold", 0, 18)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(37, 211, 102));
+        jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel6.setText("Board Size");
 
         jButton4.setBackground(new java.awt.Color(37, 211, 102));
@@ -182,61 +191,109 @@ public class Game extends javax.swing.JFrame {
         jButtonExitMenu.setFont(new java.awt.Font("Open Sans Semibold", 0, 15)); // NOI18N
         jButtonExitMenu.setForeground(new java.awt.Color(37, 211, 102));
         jButtonExitMenu.setText("Exit");
+        jButtonExitMenu.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jButtonExitMenu.addActionListener(this::jButtonExitMenuActionPerformed);
 
         jCreditsButton.setBackground(new java.awt.Color(37, 40, 46));
         jCreditsButton.setFont(new java.awt.Font("Open Sans Semibold", 0, 15)); // NOI18N
         jCreditsButton.setForeground(new java.awt.Color(37, 211, 102));
         jCreditsButton.setText("About");
+        jCreditsButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jCreditsButton.addActionListener(this::jCreditsButtonActionPerformed);
+
+        jLabel9.setFont(new java.awt.Font("Open Sans Semibold", 0, 18)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(37, 211, 102));
+        jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel9.setText("Snake Speed");
+
+        jSeparator1.setForeground(new java.awt.Color(37, 211, 102));
+
+        jSlowSpeedButton.setBackground(new java.awt.Color(37, 40, 47));
+        jSlowSpeedButton.setFont(new java.awt.Font("Open Sans Semibold", 0, 15)); // NOI18N
+        jSlowSpeedButton.setForeground(new java.awt.Color(37, 211, 102));
+        jSlowSpeedButton.setText("Slow");
+        jSlowSpeedButton.addActionListener(this::jSlowSpeedButtonActionPerformed);
+
+        jNormalSpeedButton.setBackground(new java.awt.Color(37, 40, 47));
+        jNormalSpeedButton.setFont(new java.awt.Font("Open Sans Semibold", 0, 15)); // NOI18N
+        jNormalSpeedButton.setForeground(new java.awt.Color(37, 211, 102));
+        jNormalSpeedButton.setText("Nomal");
+        jNormalSpeedButton.addActionListener(this::jNormalSpeedButtonActionPerformed);
+
+        jFastSpeedButton.setBackground(new java.awt.Color(37, 40, 47));
+        jFastSpeedButton.setFont(new java.awt.Font("Open Sans Semibold", 0, 15)); // NOI18N
+        jFastSpeedButton.setForeground(new java.awt.Color(37, 211, 102));
+        jFastSpeedButton.setText("Fast");
+        jFastSpeedButton.addActionListener(this::jFastSpeedButtonActionPerformed);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jSeparator1)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jCreditsButton)
+                .addComponent(jCreditsButton, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButtonExitMenu)
+                .addComponent(jButtonExitMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(32, 32, 32)
+                .addGap(66, 66, 66)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 63, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLittleButton, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jMediumButton, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jHugeButton, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(8, 8, 8)
-                        .addComponent(jLabel6)))
-                .addGap(31, 31, 31))
+                    .addComponent(jMediumButton, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLittleButton, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(56, 56, 56))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jNormalSpeedButton, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jSlowSpeedButton, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jFastSpeedButton, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(78, 78, 78))))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(27, 27, 27)
+                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(32, 32, 32)
+                .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(39, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(15, 15, 15)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(32, 32, 32)
-                        .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel6)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLittleButton)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jMediumButton)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jHugeButton)))
-                .addGap(70, 70, 70)
+                        .addGap(12, 12, 12)
+                        .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(55, 55, 55)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel6)
+                    .addComponent(jLabel9))
+                .addGap(13, 13, 13)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLittleButton)
+                    .addComponent(jSlowSpeedButton))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jMediumButton)
+                    .addComponent(jNormalSpeedButton))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jHugeButton)
+                    .addComponent(jFastSpeedButton))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 104, Short.MAX_VALUE)
+                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonExitMenu)
                     .addComponent(jCreditsButton))
-                .addContainerGap(205, Short.MAX_VALUE))
+                .addGap(16, 16, 16))
         );
 
         jDialog2.getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
@@ -353,6 +410,24 @@ public class Game extends javax.swing.JFrame {
         jDialog1.setModal(true);
         jDialog1.setVisible(true);
     }//GEN-LAST:event_jCreditsButtonActionPerformed
+
+    private void jSlowSpeedButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jSlowSpeedButtonActionPerformed
+        // TODO add your handling code here:
+        board2.changeSpeedSnake(200);
+        slowSpeedButtonSelected();
+    }//GEN-LAST:event_jSlowSpeedButtonActionPerformed
+
+    private void jNormalSpeedButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jNormalSpeedButtonActionPerformed
+        // TODO add your handling code here:
+        board2.changeSpeedSnake(100);
+        normalSpeedButtonSelected();
+    }//GEN-LAST:event_jNormalSpeedButtonActionPerformed
+
+    private void jFastSpeedButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFastSpeedButtonActionPerformed
+        // TODO add your handling code here:
+        board2.changeSpeedSnake(50);
+        fastSpeedButtonSelected();
+    }//GEN-LAST:event_jFastSpeedButtonActionPerformed
     
     public void littleButtonSelected() {
         jLittleButton.setBackground(new Color(37, 211, 102));
@@ -386,6 +461,38 @@ public class Game extends javax.swing.JFrame {
         jHugeButton.setBackground(new Color(37,211,102));
         jHugeButton.setForeground(new Color(37, 40, 46));
     }
+    
+    public void slowSpeedButtonSelected() {
+        jSlowSpeedButton.setBackground(new Color(37,211,102));
+        jSlowSpeedButton.setForeground(new Color(37,40,46));
+        
+        jNormalSpeedButton.setBackground(new Color(37, 40, 46));
+        jNormalSpeedButton.setForeground(new Color(37,211,102));
+        
+        jFastSpeedButton.setBackground(new Color(37, 40, 46));
+        jFastSpeedButton.setForeground(new Color(37,211,102));
+    }
+    public void normalSpeedButtonSelected() {
+        jSlowSpeedButton.setBackground(new Color(37, 40, 46));
+        jSlowSpeedButton.setForeground(new Color(37,211,102));
+        
+        jNormalSpeedButton.setBackground(new Color(37,211,102));
+        jNormalSpeedButton.setForeground(new Color(37,40,46));
+        
+        jFastSpeedButton.setBackground(new Color(37, 40, 46));
+        jFastSpeedButton.setForeground(new Color(37,211,102));
+    }
+    public void fastSpeedButtonSelected() {
+        jSlowSpeedButton.setBackground(new Color(37, 40, 46));
+        jSlowSpeedButton.setForeground(new Color(37,211,102));
+        
+        jNormalSpeedButton.setBackground(new Color(37, 40, 46));
+        jNormalSpeedButton.setForeground(new Color(37,211,102));
+        
+        jFastSpeedButton.setBackground(new Color(37,211,102));
+        jFastSpeedButton.setForeground(new Color(37,40,46));
+    }
+
     
     public void menuSelected() {
         jDialog2.setModal(true);
@@ -426,11 +533,13 @@ public class Game extends javax.swing.JFrame {
     private javax.swing.JDialog jDialog1;
     private javax.swing.JDialog jDialog2;
     private javax.swing.JButton jExitButton1;
+    private javax.swing.JButton jFastSpeedButton;
     private javax.swing.JButton jHugeButton;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JButton jLittleButton;
     private javax.swing.JButton jMediumButton;
     private javax.swing.JMenu jMenu1;
@@ -438,8 +547,11 @@ public class Game extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
+    private javax.swing.JButton jNormalSpeedButton;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JButton jSlowSpeedButton;
     private com.mycompany.snake.ScoreBoard scoreBoard1;
     // End of variables declaration//GEN-END:variables
 }
