@@ -64,6 +64,8 @@ public class Game extends javax.swing.JFrame {
         jSlowSpeedButton = new javax.swing.JButton();
         jNormalSpeedButton = new javax.swing.JButton();
         jFastSpeedButton = new javax.swing.JButton();
+        jModeTimeTrialButton = new javax.swing.JToggleButton();
+        jLabel1 = new javax.swing.JLabel();
         scoreBoard1 = new com.mycompany.snake.ScoreBoard();
         board2 = new com.mycompany.snake.Board();
         jMenuBar1 = new javax.swing.JMenuBar();
@@ -146,7 +148,6 @@ public class Game extends javax.swing.JFrame {
         );
 
         jDialog2.setMinimumSize(new java.awt.Dimension(442, 448));
-        jDialog2.setPreferredSize(new java.awt.Dimension(442, 448));
 
         jPanel1.setBackground(new java.awt.Color(37, 40, 46));
         jPanel1.setMaximumSize(new java.awt.Dimension(442, 448));
@@ -226,24 +227,50 @@ public class Game extends javax.swing.JFrame {
         jFastSpeedButton.setText("Fast");
         jFastSpeedButton.addActionListener(this::jFastSpeedButtonActionPerformed);
 
+        jModeTimeTrialButton.setBackground(new java.awt.Color(37, 40, 47));
+        jModeTimeTrialButton.setFont(new java.awt.Font("Segoe UI Semibold", 0, 14)); // NOI18N
+        jModeTimeTrialButton.setForeground(new java.awt.Color(37, 211, 102));
+        jModeTimeTrialButton.setText("OFF");
+        jModeTimeTrialButton.addActionListener(this::jModeTimeTrialButtonActionPerformed);
+
+        jLabel1.setFont(new java.awt.Font("Segoe UI Semibold", 0, 18)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(37, 211, 102));
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText("Time Trial");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jSeparator1)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jCreditsButton, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButtonExitMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jCreditsButton, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButtonExitMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(27, 27, 27)
+                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(32, 32, 32)
+                        .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 27, Short.MAX_VALUE)))
                 .addContainerGap())
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(66, 66, 66)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jHugeButton, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jMediumButton, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLittleButton, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                        .addGap(66, 66, 66)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jHugeButton, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jMediumButton, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLittleButton, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 107, Short.MAX_VALUE)
+                            .addComponent(jModeTimeTrialButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
@@ -255,12 +282,6 @@ public class Game extends javax.swing.JFrame {
                             .addComponent(jSlowSpeedButton, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jFastSpeedButton, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(78, 78, 78))))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(27, 27, 27)
-                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(32, 32, 32)
-                .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(39, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -287,7 +308,11 @@ public class Game extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jHugeButton)
                     .addComponent(jFastSpeedButton))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 104, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 16, Short.MAX_VALUE)
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jModeTimeTrialButton)
+                .addGap(33, 33, 33)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -299,6 +324,8 @@ public class Game extends javax.swing.JFrame {
         jDialog2.getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setMinimumSize(new java.awt.Dimension(900, 926));
+        setPreferredSize(new java.awt.Dimension(900, 926));
 
         scoreBoard1.setBackground(new java.awt.Color(55, 60, 63));
         scoreBoard1.setForeground(new java.awt.Color(255, 255, 255));
@@ -428,6 +455,17 @@ public class Game extends javax.swing.JFrame {
         board2.changeSpeedSnake(50);
         fastSpeedButtonSelected();
     }//GEN-LAST:event_jFastSpeedButtonActionPerformed
+
+    private void jModeTimeTrialButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jModeTimeTrialButtonActionPerformed
+        // TODO add your handling code here:
+        if (jModeTimeTrialButton.isSelected()){
+            jModeTimeTrialButton.setText("ON");
+            board2.turnOnTimeTrial(true);
+        } else {
+            jModeTimeTrialButton.setText("OFF");
+            board2.turnOnTimeTrial(false);
+        }
+    }//GEN-LAST:event_jModeTimeTrialButtonActionPerformed
     
     public void littleButtonSelected() {
         jLittleButton.setBackground(new Color(37, 211, 102));
@@ -535,6 +573,7 @@ public class Game extends javax.swing.JFrame {
     private javax.swing.JButton jExitButton1;
     private javax.swing.JButton jFastSpeedButton;
     private javax.swing.JButton jHugeButton;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
@@ -547,6 +586,7 @@ public class Game extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
+    private javax.swing.JToggleButton jModeTimeTrialButton;
     private javax.swing.JButton jNormalSpeedButton;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
